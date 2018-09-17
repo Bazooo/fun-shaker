@@ -1,0 +1,1 @@
+export { Shaker } from './shaker';
