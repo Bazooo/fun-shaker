@@ -24,6 +24,10 @@ export class Shaker {
   private usedObjects: ShakerObject[] = []
   private timer: Timer
 
+  /**
+   * Constructor for the Shaker object
+   * @param {ShakerOptions} [options] Default options overrides
+   */
   constructor (options?: ShakerOptions) {
     if (options) {
       this.options = {
@@ -35,15 +39,16 @@ export class Shaker {
 
   /**
    * Adds shakerObject at the end of the shaker queue
-   * @param shakerObject Shaker object
+   * @param {ShakerObject} shakerObject Shaker object
    *
-   * @param callback Callback function on shake
-   * @param name Unique name for the callback
-   * @param interval Time between each autoshake
+   * @param {ShakerFunction} callback Callback function on shake
+   * @param {number} [interval] Time between each autoshake
+   * @param {string} [name] Unique name for the callback
+   * @throws
    */
   add (shakerObject: ShakerObject)
-  add (callback: ShakerFunction, name?: string, interval?: number)
-  add (shakerObjectOrCallback: ShakerObject | ShakerFunction, name?: string, interval?: number) {
+  add (callback: ShakerFunction, interval?: number, name?: string)
+  add (shakerObjectOrCallback: ShakerObject | ShakerFunction, interval?: number, name?: string) {
     let obj: ShakerObject
     if (typeof shakerObjectOrCallback === 'object') {
       obj = shakerObjectOrCallback
@@ -64,7 +69,7 @@ export class Shaker {
 
   /**
    * Removes an object from the shaker queue
-   * @param idOrName Index or Unique name of the object to be removed
+   * @param {number | string} idOrName Index or Unique name of the object to be removed
    */
   remove (idOrName: number | string) {
     let id
@@ -171,7 +176,7 @@ export class Shaker {
 
   /**
    * Gets the index of an object
-   * @param name Object name
+   * @param {string} name Object name
    */
   getIndex (name: string): number {
     let index: number = this.leftObjects.findIndex(obj => obj.name === name)

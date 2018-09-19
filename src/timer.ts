@@ -20,8 +20,8 @@ export class Timer {
 
   /**
    * Starts countdown to 0
-   * @param callback
-   * @param time
+   * @param {TimerCallback} callback - Callback at the end of the timer
+   * @param {number} time - Time before callback
    */
   countdown (callback: TimerCallback, time: number) {
     clearTimeout(this.currentTimeout)
@@ -33,8 +33,8 @@ export class Timer {
 
   /**
    * Starts a repeated countdown
-   * @param callback
-   * @param interval
+   * @param {TimerCallback} callback - Callback at the each intervals of the timer
+   * @param {number} Interval - Time between callbacks
    */
   repeat (callback: TimerCallback, interval: number) {
     clearTimeout(this.currentTimeout)
@@ -85,7 +85,7 @@ export class Timer {
 
   /**
    * Skips ahead in the current timer
-   * @param time Time to skip
+   * @param {number} [time] Time to skip
    */
   skip (time?: number) {
     clearTimeout(this.currentTimeout)
@@ -114,7 +114,7 @@ export class Timer {
 
   /**
    * Add time to current timer
-   * @param time Time to be added
+   * @param {number} time Time to be added
    */
   addTime (time: number) {
     clearTimeout(this.currentTimeout)
@@ -151,7 +151,7 @@ export class Timer {
 
   /**
    * Gets timer remaining
-   * @returns Time remaining
+   * @returns {number} Time remaining
    */
   getTimeRemaining (): number {
     return this.expected - new Date().getTime()
@@ -159,7 +159,7 @@ export class Timer {
 
   /**
    * Gets current paused status
-   * @returns Whether the timer is paused
+   * @returns {boolean} Whether the timer is paused
    */
   isPaused (): boolean {
     return this.paused

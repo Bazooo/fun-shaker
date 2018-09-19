@@ -14,7 +14,9 @@ import { Shaker } from 'fun-shaker';
 let shaker = new Shaker();
 ```
 
-### `shaker.add()`
+### `shaker.add(shakerObject) or shaker.add(callback [, interval, name])`
+
+Adds a new object to the shaker
 
 ```javascript
 // Shaker object
@@ -25,10 +27,10 @@ shaker.add({
 });
 
 // OR
-shaker.add(my_callback, 'my_callback_name', 3000);
+shaker.add(my_callback, 3000, 'my_callback_name');
 ```
 
-Adds a new object to the shaker
+### `shaker.add()`
 
 ## Options
 
