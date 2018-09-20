@@ -158,7 +158,7 @@ export class Shaker {
   // MISCELLANEOUS
 
   /**
-   * Rewinds by one the shaker
+   * Rewinds the shaker by one
    */
   rewind () {
     const obj = this.usedObjects.pop()

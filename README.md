@@ -30,7 +30,54 @@ shaker.add({
 shaker.add(my_callback, 3000, 'my_callback_name');
 ```
 
-### `shaker.add()`
+### `shaker.remove(index) or shaker.remove(name)`
+
+Removes an object at an index or with an unique name
+
+```javascript
+// Remove at index
+shaker.remove(3);
+
+// OR
+shaker.remove('my_callback_name');
+```
+
+### `shaker.shake()`
+
+Runs the next callback in the queue
+
+### `shaker.startAutoshaker()`
+
+Shakes automatically in intervals
+
+### `shaker.stopAutoshaker()`
+
+Stops the autoshaker
+
+### `shaker.pauseAutoshaker()`
+
+Pauses the autoshaker
+
+### `shaker.resumeAutoshaker()`
+
+Resumes the autoshaker
+
+### `shaker.rewind()`
+
+Rewinds the shaker by one
+
+### `shaker.getNbLeft()`
+
+Get the number of objects left in the shaker
+
+### `shaker.getIndex(name)`
+
+Get the index number of an object
+
+```javascript
+shaker.getIndex('my_callback_name');
+// => 3
+```
 
 ## Options
 
