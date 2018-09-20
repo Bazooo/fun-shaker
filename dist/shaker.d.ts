@@ -14,20 +14,25 @@ export declare class Shaker {
     private leftObjects;
     private usedObjects;
     private timer;
+    /**
+     * Constructor for the Shaker object
+     * @param {ShakerOptions} [options] Default options overrides
+     */
     constructor(options?: ShakerOptions);
     /**
      * Adds shakerObject at the end of the shaker queue
-     * @param shakerObject Shaker object
+     * @param {ShakerObject} shakerObject Shaker object
      *
-     * @param callback Callback function on shake
-     * @param name Unique name for the callback
-     * @param interval Time between each autoshake
+     * @param {ShakerFunction} callback Callback function on shake
+     * @param {number} [interval] Time between each autoshake
+     * @param {string} [name] Unique name for the callback
+     * @throws
      */
     add(shakerObject: ShakerObject): any;
-    add(callback: ShakerFunction, name?: string, interval?: number): any;
+    add(callback: ShakerFunction, interval?: number, name?: string): any;
     /**
      * Removes an object from the shaker queue
-     * @param idOrName Index or Unique name of the object to be removed
+     * @param {number | string} idOrName Index or Unique name of the object to be removed
      */
     remove(idOrName: number | string): void;
     /**
@@ -55,7 +60,7 @@ export declare class Shaker {
      */
     private autoShake;
     /**
-     * Rewinds by one the shaker
+     * Rewinds the shaker by one
      */
     rewind(): void;
     /**
@@ -64,7 +69,7 @@ export declare class Shaker {
     getNbLeft(): number;
     /**
      * Gets the index of an object
-     * @param name Object name
+     * @param {string} name Object name
      */
     getIndex(name: string): number;
 }

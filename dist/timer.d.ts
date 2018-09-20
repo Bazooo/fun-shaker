@@ -2,7 +2,7 @@ declare type TimerCallback = () => void;
 /**
  * Self adjusting timer
  */
-export default class Timer {
+export declare class Timer {
     private currentTimeout;
     private wantedTime;
     private callback;
@@ -12,14 +12,14 @@ export default class Timer {
     private repeated;
     /**
      * Starts countdown to 0
-     * @param callback
-     * @param time
+     * @param {TimerCallback} callback - Callback at the end of the timer
+     * @param {number} time - Time before callback
      */
     countdown(callback: TimerCallback, time: number): void;
     /**
      * Starts a repeated countdown
-     * @param callback
-     * @param interval
+     * @param {TimerCallback} callback - Callback at the each intervals of the timer
+     * @param {number} Interval - Time between callbacks
      */
     repeat(callback: TimerCallback, interval: number): void;
     /**
@@ -36,12 +36,12 @@ export default class Timer {
     resume(): void;
     /**
      * Skips ahead in the current timer
-     * @param time Time to skip
+     * @param {number} [time] Time to skip
      */
     skip(time?: number): void;
     /**
      * Add time to current timer
-     * @param time Time to be added
+     * @param {number} time Time to be added
      */
     addTime(time: number): void;
     /**
@@ -50,12 +50,12 @@ export default class Timer {
     private repeatStep;
     /**
      * Gets timer remaining
-     * @returns Time remaining
+     * @returns {number} Time remaining
      */
     getTimeRemaining(): number;
     /**
      * Gets current paused status
-     * @returns Whether the timer is paused
+     * @returns {boolean} Whether the timer is paused
      */
     isPaused(): boolean;
 }

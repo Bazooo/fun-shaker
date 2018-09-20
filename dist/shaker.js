@@ -2,6 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const timer_1 = require("./timer");
 class Shaker {
+    /**
+     * Constructor for the Shaker object
+     * @param {ShakerOptions} [options] Default options overrides
+     */
     constructor(options) {
         this.options = {
             defaultInterval: 1000,
@@ -14,7 +18,7 @@ class Shaker {
             this.options = Object.assign({}, this.options, options);
         }
     }
-    add(shakerObjectOrCallback, name, interval) {
+    add(shakerObjectOrCallback, interval, name) {
         let obj;
         if (typeof shakerObjectOrCallback === 'object') {
             obj = shakerObjectOrCallback;
@@ -33,7 +37,7 @@ class Shaker {
     }
     /**
      * Removes an object from the shaker queue
-     * @param idOrName Index or Unique name of the object to be removed
+     * @param {number | string} idOrName Index or Unique name of the object to be removed
      */
     remove(idOrName) {
         let id;
@@ -65,7 +69,7 @@ class Shaker {
      */
     startAutoshaker() {
         this.isAutoshaking = true;
-        this.timer = new timer_1.default();
+        this.timer = new timer_1.Timer();
         const obj = this.leftObjects[0];
         const time = obj.interval ? obj.interval : this.options.defaultInterval;
         this.timer.countdown(() => {
@@ -111,7 +115,7 @@ class Shaker {
     }
     // MISCELLANEOUS
     /**
-     * Rewinds by one the shaker
+     * Rewinds the shaker by one
      */
     rewind() {
         const obj = this.usedObjects.pop();
@@ -126,7 +130,7 @@ class Shaker {
     }
     /**
      * Gets the index of an object
-     * @param name Object name
+     * @param {string} name Object name
      */
     getIndex(name) {
         let index = this.leftObjects.findIndex(obj => obj.name === name);
