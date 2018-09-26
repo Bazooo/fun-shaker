@@ -3,6 +3,11 @@
 ## Install
 
 ```console
+git clone https://github.com/Bazooo/fun-shaker.git
+```
+
+Upon release on npm
+```console
 npm install fun-shaker
 ```
 
